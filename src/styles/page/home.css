@@ -1,0 +1,21 @@
+.bg-futo-school-gate {
+  background-image: linear-gradient(
+      to left,
+      rgba(var(--green-rgb) / 0.1),
+      rgba(var(--light-rgb) / 0.5)
+    ),
+    url("../../assets/images/futo-school-building.jpg");
+}
+
+@media (max-width: 768px) {
+  .bg-futo-school-gate-fade {
+    background: linear-gradient(
+        to left,
+        rgba(var(--light-rgb) / 0.9),
+        rgba(var(--light-rgb) / 0.9)
+      ),
+      url("../../assets/images/futo-school-building.jpg");
+
+    background-size: cover;
+  }
+}

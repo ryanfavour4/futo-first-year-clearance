@@ -1,13 +1,79 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* INTER FONT */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* POPPINS FONT */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green-color: #019541;
+  --green-rgb: 44 97 405;
+  --yellow-color: #edcb11;
+  --yellow-rgb: 225 241 0;
+  --grey: #e0dede;
+  --grey-rgb: 224 222 222;
+  --dark: #161616;
+  --dark-rgb: 22 22 22;
+  --light: #f7f7f7;
+  --light-rgb: 247 247 247;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  transition: all 0.1s ease-in-out;
+  scroll-behavior: smooth;
+}
+
+html {
+  overflow-x: hidden;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  position: relative;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  width: 100%;
+  overflow: hidden;
+  font-size: 16px;
+  background: var(--light);
+}
+
+.breaker {
+  word-wrap: break-word;
+  word-break: break-all;
+  hyphenate-limit-chars: 8 2;
+  hyphens: auto;
+  line-break: strict;
+  overflow-wrap: break-word;
+  white-space: break-spaces;
+  hanging-punctuation: first;
+  line-clamp: 3;
+  text-overflow: ellipsis;
+}
+
+.wrapper {
+  width: 98%;
+  max-width: 1350px;
+  margin: auto;
+  height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
 }

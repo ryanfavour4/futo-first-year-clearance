@@ -1,0 +1,24 @@
+.mobile-nav-component {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.mobile-nav-component-open {
+  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
+  visibility: visible;
+  transition: all 0.5s ease-in-out;
+}
+
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+nav ul li a.active {
+  color: var(--sky-blue-color);
+}

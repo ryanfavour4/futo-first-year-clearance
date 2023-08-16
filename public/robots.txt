@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: *
+Sitemap: https://futo-first-year-clearance.netlify.app/sitemap.xml

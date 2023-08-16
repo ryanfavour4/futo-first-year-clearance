@@ -11,7 +11,7 @@ const HomePage = () => {
           <div className="text-4xl mb-2 font-bold">
             Welcome Futo Clearance Portal
           </div>
-          <div className="text-xl pb-4">
+          <div className="text-xl p-4 ">
             Futo Clearance Portal is a portal to help students to get clearance
             with ease from any destination
           </div>

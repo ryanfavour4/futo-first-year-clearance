@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Img from "../ui/Img";
 import logo from "../../assets/images/futo-logo.png";
 import { NavLink } from "react-router-dom";
@@ -7,9 +7,12 @@ import { ReactComponent as MenuIcon } from "../../assets/svg/hamburger-menu.svg"
 import { ReactComponent as CloseIcon } from "../../assets/svg/close-x.svg";
 import LinkButton from "../ui/LinkButton";
 import "../../styles/components/Navbar.css";
+import { AuthContext } from "../../store/context/AuthContext";
+import OutlineButton from "../ui/OutlineButton";
+import Button from "../ui/Button";
 
 const Navbar = () => {
-  const { navClassName, handleToggleNavOpen } = useNavbar();
+  const { navClassName, apiKey, handleToggleNavOpen, logout } = useNavbar();
 
   return (
     <>
@@ -27,12 +30,22 @@ const Navbar = () => {
                 <NavLink to="/">Home</NavLink>
               </li>
               <li className="hover:text-yellow cursor-pointer">
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/contact-us">Contact</NavLink>
               </li>
             </ul>
-            <OutlineLink className="hidden md:inline-block" to="/">
-              Get Started
-            </OutlineLink>
+            {apiKey ? (
+              <OutlineButton
+                className="hidden md:inline-block"
+                onClick={logout}
+              >
+                Logout
+              </OutlineButton>
+            ) : (
+              <OutlineLink className="hidden md:inline-block" to="/main-menu">
+                Get Started
+              </OutlineLink>
+            )}
+
             {/* //??============== MOBILE NAVBAR ==================??// */}
             <MenuIcon
               onClick={handleToggleNavOpen}
@@ -56,9 +69,26 @@ const Navbar = () => {
                     <NavLink to="/">Home</NavLink>
                   </li>
                 </ul>
-                <LinkButton className="mt-4" to="/">
-                  Get Started
-                </LinkButton>
+
+                {apiKey ? (
+                  <Button
+                    className="mt-4"
+                    onClick={() => {
+                      handleToggleNavOpen();
+                      logout();
+                    }}
+                  >
+                    Logout
+                  </Button>
+                ) : (
+                  <LinkButton
+                    onClick={handleToggleNavOpen}
+                    className="mt-4"
+                    to="/main-menu"
+                  >
+                    Get Started
+                  </LinkButton>
+                )}
               </nav>
             </div>
           </nav>
@@ -71,6 +101,7 @@ const Navbar = () => {
 export default Navbar;
 
 export const useNavbar = () => {
+  const { logout, apiKey } = useContext(AuthContext);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [navClassName, setNavClassName] = useState("mobile-nav-component");
 
@@ -84,5 +115,5 @@ export const useNavbar = () => {
     );
   }, [isNavOpen]);
 
-  return { navClassName, handleToggleNavOpen };
+  return { navClassName, apiKey, handleToggleNavOpen, logout };
 };

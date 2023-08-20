@@ -15,7 +15,7 @@ const HomePage = () => {
             Futo Clearance Portal is a portal to help students to get clearance
             with ease from any destination
           </div>
-          <LinkButton className="px-6" to="/">
+          <LinkButton className="px-6" to="/main-menu">
             Get Started
           </LinkButton>
         </div>

@@ -1,0 +1,28 @@
+input:invalid {
+  animation: shake 0.5s ease-in-out;
+  border-color: #f00;
+}
+
+option:not(:checked) {
+  background-color: transparent;
+  color: var(--dark);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25%,
+  75% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+@media (max-width: 768px) {
+}

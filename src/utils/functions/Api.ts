@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://clearancefuto.pythonanywhere.com";
+const API_BASE_URL = "https://clearancefuto.pythonanywhere.com";
 
 export const Api = axios.create({
     baseURL: API_BASE_URL,

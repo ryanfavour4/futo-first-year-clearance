@@ -52,7 +52,7 @@ export default function Login() {
                 className="bg-transparent border-2 border-gray-300 rounded-lg p-2 w-full outline-none"
               />
             </div>
-            <div className="flex flex-col gap-1 justify-center">
+            {/* <div className="flex flex-col gap-1 justify-center">
               <label htmlFor="email" className="font-semibold text-lg">
                 Email
               </label>
@@ -65,7 +65,7 @@ export default function Login() {
                 placeholder="Email Address"
                 className="bg-transparent border-2 border-gray-300 rounded-lg p-2 w-full outline-none"
               />
-            </div>
+            </div> */}
             <div className="flex flex-col gap-1 justify-center relative">
               <label htmlFor="password" className="font-semibold text-lg">
                 Password
@@ -119,7 +119,7 @@ export default function Login() {
 
 export type loginObjectType = {
   username: string;
-  email: string;
+  // email: string;
   password: string;
 };
 
@@ -128,7 +128,7 @@ export const useLogin = () => {
   const [passwordType, setPasswordType] = useState("password");
   const [loginObject, setLoginObject] = useState<loginObjectType>({
     username: "",
-    email: "",
+    // email: "",
     password: "",
   });
   const V = new Validator();

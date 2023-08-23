@@ -28,7 +28,7 @@ export class Validator {
   }
 }
 
-//? PROTOYPE FUNCTIONS DECLARED BELOW
+//? PROTOTYPE FUNCTIONS DECLARED BELOW
 
 Validator.prototype.validate = function (obj) {
   this.obj = obj;
@@ -41,18 +41,18 @@ Validator.prototype.validate = function (obj) {
     return;
   }
 
-  //? SORT THROUGH OBECTS AND GRAB THE OBJECT TO VALIDATE FROM THIER KEYS AND VALUE PAIRS
+  //? SORT THROUGH OBJECTS AND GRAB THE OBJECT TO VALIDATE FROM THEIR KEYS AND VALUE PAIRS
   const entries = Object.entries(this.obj);
 
   //? LOOP THOUGH ENTRIES OBJECT
   entries.forEach((objArr) => {
     //? CHECK IF EMPTY SO IT BREAKS OUT INSTANTLY
     if (objArr[1].trim() === "") {
-      this.errors.push(`${objArr[0]} IS COMPLETLY EMPTY`);
+      this.errors.push(`${objArr[0]} IS COMPLETELY EMPTY`);
       return;
     }
 
-    //? VAILDATE BASED ON THE USERS RULES
+    //? VALIDATE BASED ON THE USERS RULES
     //? FIRSTLY CHECKS IF THAT OBJECT WAS ASKED TO BE VALIDATED
     if (this.rules[objArr[0]] !== undefined) {
       const rules = this.rules[objArr[0]];
@@ -75,7 +75,7 @@ Validator.prototype.validate = function (obj) {
   });
 };
 
-//? STRING ONLY VALUES BASED ON THE VALIIDATE METHOD CALLED
+//? STRING ONLY VALUES BASED ON THE VALIDATE METHOD CALLED
 Validator.prototype.validateString = function (string) {
   const rules = this.rules;
   if (string.trim() === "") {

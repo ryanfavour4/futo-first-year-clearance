@@ -32,6 +32,11 @@ const Navbar = () => {
               <li className="hover:text-yellow cursor-pointer">
                 <NavLink to="/contact-us">Contact</NavLink>
               </li>
+              {apiKey && (
+                <li className="hover:text-yellow cursor-pointer">
+                  <NavLink to="/profile">Profile</NavLink>
+                </li>
+              )}
             </ul>
             {apiKey ? (
               <OutlineButton
@@ -68,6 +73,11 @@ const Navbar = () => {
                   <li className="hover:text-yellow text-lg cursor-pointer">
                     <NavLink to="/">Home</NavLink>
                   </li>
+                  {apiKey && (
+                    <li className="hover:text-yellow cursor-pointer">
+                      <NavLink to="/profile">Profile</NavLink>
+                    </li>
+                  )}
                 </ul>
 
                 {apiKey ? (

@@ -2,11 +2,12 @@ import React, { ReactNode, createContext, useEffect, useState } from "react";
 import { registerObjectType } from "../../pages/signups/Register";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { Api } from "../../utils/functions/Api";
+import { Api } from "../../utils/config/Api";
 import { loginObjectType } from "../../pages/signups/Login";
 
 type AuthContextType = {
   loading: boolean;
+  forgotPassword: (email: string) => void;
   Register: (registerPayload: registerObjectType) => void;
   login: (loginPayload: loginObjectType) => void;
   logout: () => void;
@@ -43,11 +44,11 @@ export const AuthProvider = ({ children }: Props) => {
       .catch((err) => {
         setLoading(false);
         toast.error(
-          err.message || err?.username
+          err?.username !== undefined
             ? "The Registration number is already in use"
-            : err?.email
+            : err?.email !== undefined
             ? "This email is already in use"
-            : err?.non_field_errors
+            : err?.non_field_errors !== undefined
             ? "That password is too similar with the email"
             : "Something Went Wrong ☹"
         );
@@ -67,16 +68,32 @@ export const AuthProvider = ({ children }: Props) => {
       })
       .catch((err) => {
         setLoading(false);
+        console.log(err);
         toast.error(
-          err.message || err?.username
+          err?.username !== undefined
             ? "The Registration number is already in use"
-            : err?.email
+            : err?.email !== undefined
             ? "This email is already in use"
-            : err?.non_field_errors
-            ? "That password is too similar with the email"
+            : err?.non_field_errors !== undefined
+            ? err?.non_field_errors[0]
             : "Something Went Wrong ☹"
         );
       });
+  };
+
+  //????????========================= FORGOT PASSWORD ======================== ??//
+  const forgotPassword = (email: string) => {
+    toast("Coming soon... 🕚");
+    // setLoading(true);
+    // Api.post("/account/auth/password/reset/", { email })
+    //   .then((res) => {
+    //     setLoading(false);
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     setLoading(false);
+    //     console.log(err);
+    //   });
   };
 
   //????????========================= LOGOUT A USER ======================== ??//
@@ -86,7 +103,9 @@ export const AuthProvider = ({ children }: Props) => {
   };
 
   return (
-    <AuthContext.Provider value={{ loading, login, logout, Register, apiKey }}>
+    <AuthContext.Provider
+      value={{ loading, login, logout, Register, apiKey, forgotPassword }}
+    >
       {children}
     </AuthContext.Provider>
   );

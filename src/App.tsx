@@ -1,30 +1,37 @@
 import { BrowserRouter } from "react-router-dom";
 import Routers from "./routes/Router";
+import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
 import Layout from "./components/layout/Layout";
 import { RootStore } from "./store/context/RootStore";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FallbackComponent, errorHandler } from "./components/layout/Fallback";
 
 function App() {
   return (
     <BrowserRouter>
-      <RootStore>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
-        <Layout>
-          <Routers />
-        </Layout>
-      </RootStore>
+      <ReactErrorBoundary
+        FallbackComponent={FallbackComponent}
+        onError={errorHandler}
+      >
+        <RootStore>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
+          <Layout>
+            <Routers />
+          </Layout>
+        </RootStore>
+      </ReactErrorBoundary>
     </BrowserRouter>
   );
 }

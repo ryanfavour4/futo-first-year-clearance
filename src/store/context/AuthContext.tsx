@@ -7,11 +7,13 @@ import { loginObjectType } from "../../pages/signups/Login";
 
 type AuthContextType = {
   loading: boolean;
+  apiKey: string | null;
+  error: boolean;
+  message: string;
   forgotPassword: (email: string) => void;
   Register: (registerPayload: registerObjectType) => void;
   login: (loginPayload: loginObjectType) => void;
   logout: () => void;
-  apiKey: string | null;
 };
 
 export const AuthContext = createContext<AuthContextType>(
@@ -26,6 +28,8 @@ export const AuthProvider = ({ children }: Props) => {
   const navigate = useNavigate();
   const [apiKey, setApiKey] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [message, setMessage] = useState("");
   const API_KEY_LOCAL_STORAGE = localStorage.getItem("ApiKey");
 
   useEffect(() => {
@@ -35,14 +39,18 @@ export const AuthProvider = ({ children }: Props) => {
   //????????========================= REGISTER A USER ======================== ??//
   const Register = (registerPayload: registerObjectType) => {
     setLoading(true);
+    setError(false);
+    setMessage("");
     Api.post("/account/auth/reg/", registerPayload)
       .then((res) => {
         setLoading(false);
         toast.success(res.data.message || "Account Successfully Created");
         navigate("/login");
+        setLoading(false);
+        setError(true);
+        setMessage("An Error Occurred While Registering");
       })
       .catch((err) => {
-        setLoading(false);
         toast.error(
           err?.username !== undefined
             ? "The Registration number is already in use"
@@ -58,6 +66,8 @@ export const AuthProvider = ({ children }: Props) => {
   //????????========================= LOGIN A USER ======================== ??//
   const login = (loginPayload: loginObjectType) => {
     setLoading(true);
+    setError(false);
+    setMessage("");
     Api.post("/account/auth/login/", loginPayload)
       .then((res) => {
         setLoading(false);
@@ -68,7 +78,8 @@ export const AuthProvider = ({ children }: Props) => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
+        setError(true);
+        setMessage("An Error Occurred Logging In");
         toast.error(
           err?.username !== undefined
             ? "The Registration number is already in use"
@@ -104,7 +115,16 @@ export const AuthProvider = ({ children }: Props) => {
 
   return (
     <AuthContext.Provider
-      value={{ loading, login, logout, Register, apiKey, forgotPassword }}
+      value={{
+        loading,
+        apiKey,
+        error,
+        message,
+        login,
+        logout,
+        Register,
+        forgotPassword
+      }}
     >
       {children}
     </AuthContext.Provider>

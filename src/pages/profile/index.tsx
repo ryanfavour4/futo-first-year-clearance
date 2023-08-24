@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from "react";
 import Img from "../../components/ui/Img";
 import nouser from "../../assets/svg/user.svg";
 import studentBg from "../../assets/images/student-bg-image.jpg";
@@ -8,8 +9,10 @@ import { ReactComponent as GenderIcon } from "../../assets/svg/gender.svg";
 import { ReactComponent as SignIcon } from "../../assets/svg/signature.svg";
 import { ReactComponent as CaliPenIcon } from "../../assets/svg/calligraphy-pen.svg";
 import OutlineLink from "../../components/ui/OutlineLink";
+import { UserContext } from "../../store/context/UserContext";
 
 function Profile() {
+  const { loading } = useProfile();
   return (
     <div>
       <div className="wrapper">
@@ -112,3 +115,13 @@ function Profile() {
 }
 
 export default Profile;
+
+const useProfile = () => {
+  const { loading, getUserProfile } = useContext(UserContext);
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
+
+  return { loading, getUserProfile };
+};

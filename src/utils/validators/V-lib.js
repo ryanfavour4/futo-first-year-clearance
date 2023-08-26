@@ -11,7 +11,6 @@ export class Validator {
   get rules() {
     return this.#rules;
   }
-
   set rules(value) {
     if (value instanceof Object) {
       if (Object.keys(value).length !== 0) {
@@ -22,7 +21,6 @@ export class Validator {
       throw new Error("Invalid argument. Expected an object.");
     }
   }
-
   get errors() {
     return this.#errors;
   }
@@ -34,16 +32,13 @@ Validator.prototype.validate = function (obj) {
   this.obj = obj;
   //? EMPTY ARRAY FOR FRESH VALIDATION CHECK
   this.errors.splice(0);
-
   //? CHECKS IF THE VALUE TO VALIDATE IS A STRING OR AN OBJECT
   if (isNaN(obj.length) === false) {
     this.validateString(obj);
     return;
   }
-
   //? SORT THROUGH OBJECTS AND GRAB THE OBJECT TO VALIDATE FROM THEIR KEYS AND VALUE PAIRS
   const entries = Object.entries(this.obj);
-
   //? LOOP THOUGH ENTRIES OBJECT
   entries.forEach((objArr) => {
     //? CHECK IF EMPTY SO IT BREAKS OUT INSTANTLY
@@ -51,12 +46,10 @@ Validator.prototype.validate = function (obj) {
       this.errors.push(`${objArr[0]} IS COMPLETELY EMPTY`);
       return;
     }
-
     //? VALIDATE BASED ON THE USERS RULES
     //? FIRSTLY CHECKS IF THAT OBJECT WAS ASKED TO BE VALIDATED
     if (this.rules[objArr[0]] !== undefined) {
       const rules = this.rules[objArr[0]];
-
       if (rules.maxLength)
         this.validateValueMaxLength(objArr[1], objArr[0], rules.maxLength);
       if (rules.minLength)

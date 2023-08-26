@@ -17,7 +17,7 @@ export default function Login() {
     loading,
     handleSeePassword,
     handleLoginInputChange,
-    handleSubmitLoginDetails,
+    handleSubmitLoginDetails
   } = useLogin();
   return (
     <div className="md:flex min-h-[calc(100vh-92px)]">
@@ -137,16 +137,15 @@ export const useLogin = () => {
   const [loginObject, setLoginObject] = useState<loginObjectType>({
     username: "",
     // email: "",
-    password: "",
+    password: ""
   });
   const V = new Validator();
   const { errors } = V;
   V.rules = {
     password: {
       minLength: 6,
-      maxLength: 12,
-      regex: /^(?![!@#$%^&*()_+{}\\[\]:;<>,.?~=/|\\-]+$).*/,
-    },
+      regex: /^(?![!@#$%^&*()_+{}\\[\]:;<>,.?~=/|\\-]+$).*/
+    }
   };
 
   //??? ===================== CHANGE SEE PASSWORD TYPE ==================== ???//
@@ -174,6 +173,6 @@ export const useLogin = () => {
     loading,
     handleSeePassword,
     handleLoginInputChange,
-    handleSubmitLoginDetails,
+    handleSubmitLoginDetails
   };
 };

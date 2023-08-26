@@ -46,11 +46,11 @@ export const AuthProvider = ({ children }: Props) => {
         setLoading(false);
         toast.success(res.data.message || "Account Successfully Created");
         navigate("/login");
+      })
+      .catch((err) => {
         setLoading(false);
         setError(true);
         setMessage("An Error Occurred While Registering");
-      })
-      .catch((err) => {
         toast.error(
           err?.username !== undefined
             ? "The Registration number is already in use"
@@ -58,7 +58,9 @@ export const AuthProvider = ({ children }: Props) => {
             ? "This email is already in use"
             : err?.non_field_errors !== undefined
             ? "That password is too similar with the email"
-            : "Something Went Wrong ☹"
+            : err?.password1 !== undefined
+            ? "That password is too easy to break or hack"
+            : "Something Went Wrong ☹, Please Check Your Internet Connection"
         );
       });
   };
@@ -88,7 +90,7 @@ export const AuthProvider = ({ children }: Props) => {
             ? "This email is already in use"
             : err?.non_field_errors !== undefined
             ? err?.non_field_errors[0]
-            : "Something Went Wrong ☹"
+            : "Something Went Wrong ☹, Please Check Your Internet Connection"
         );
       });
   };

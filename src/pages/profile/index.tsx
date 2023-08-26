@@ -17,7 +17,6 @@ import { FallbackComponent } from "../../components/layout/Fallback";
 
 function Profile() {
   const { loading, user, error, getUserProfile } = useProfile();
-  console.log(user);
 
   if (loading) {
     return <Loading />;

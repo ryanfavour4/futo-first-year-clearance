@@ -1,3 +1,5 @@
+// ?????? ========  GET USER (STUDENT) INTERFACE ============ ??????? //
+
 export interface IStudent {
   id: number;
   date_of_birth: Date;
@@ -41,3 +43,35 @@ export interface Department {
   groups: string[];
   user_permissions: string[];
 }
+
+// ?????? ========  EDIT USER (STUDENT) INTERFACE =========== ??????? //
+
+export interface IEditStudent {
+  student: Student;
+  date_of_birth: Date;
+  sex: string;
+  nationality: string;
+  place_of_birth: string;
+  state_of_origin: string;
+  local_government: string;
+  permenant_address: string;
+  contact_address: string;
+  religion: string;
+  next_of_kin_name: string;
+  next_of_kin_address: string;
+  next_of_kin_relationship: string;
+  next_of_kin_telephone: string;
+  sponsor_name: string;
+  sponsor_address: string;
+  marital_status: string;
+  signature: string;
+  profile_picture: string;
+  department: number;
+  faculty: number;
+}
+
+export interface Student {
+  first_name: string;
+  last_name: string;
+}
+// ???????? =============  END OF INTERFACE =============== ???????? //

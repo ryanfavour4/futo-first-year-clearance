@@ -46,7 +46,7 @@ export const UserProvider = ({ children }: Props) => {
       .catch((err) => {
         setLoading(false);
         setError(true);
-        setMessage("An Error Occurred While Registering");
+        setMessage("An Error Occurred");
       });
   };
 

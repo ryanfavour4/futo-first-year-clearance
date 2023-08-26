@@ -65,7 +65,6 @@ window.addEventListener("fetch", (event) => {
           // If fetch() returns a valid HTTP response with a response code in
           // the 4xx or 5xx range, the catch() will NOT be called.
           console.log("Fetch failed; returning offline page instead.", error);
-
           const cache = await caches.open(CACHE_NAME);
           const cachedResponse = await cache.match(OFFLINE_URL);
           return cachedResponse;
@@ -73,7 +72,6 @@ window.addEventListener("fetch", (event) => {
       })()
     );
   }
-
   // If our if() condition is false, then this fetch handler won't intercept the
   // request. If there are any other fetch handlers registered, they will get a
   // chance to call event.respondWith(). If no fetch handlers call

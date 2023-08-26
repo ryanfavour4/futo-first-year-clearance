@@ -10,13 +10,14 @@ import "../../styles/components/Navbar.css";
 import { AuthContext } from "../../store/context/AuthContext";
 import OutlineButton from "../ui/OutlineButton";
 import Button from "../ui/Button";
+import { UserContext } from "../../store/context/UserContext";
 
 const Navbar = () => {
-  const { navClassName, apiKey, handleToggleNavOpen, logout } = useNavbar();
+  const { navClassName, apiKey, handleToggleNavOpen, logOut } = useNavbar();
 
   return (
     <>
-      <div className="bg-green text-white p-2 sticky top-0 z-50">
+      <div className="bg-green text-white p-2">
         <div className="wrapper">
           <nav className="flex items-center justify-between">
             <div className="text-lg font-semibold flex items-center gap-4">
@@ -41,7 +42,7 @@ const Navbar = () => {
             {apiKey ? (
               <OutlineButton
                 className="hidden md:inline-block"
-                onClick={logout}
+                onClick={logOut}
               >
                 Logout
               </OutlineButton>
@@ -57,7 +58,7 @@ const Navbar = () => {
               className="w-12 cursor-pointer text-light md:hidden"
             />
             <div
-              className={`md:hidden z-10 fixed bg-white text-green left-0 right-0 top-0 bottom-0 ${navClassName}`}
+              className={`md:hidden z-30 fixed bg-white text-green left-0 right-0 top-0 bottom-0 ${navClassName}`}
             >
               <div
                 onClick={handleToggleNavOpen}
@@ -68,9 +69,9 @@ const Navbar = () => {
               <nav className="min-h-[600px] flex flex-col items-center justify-center text-center">
                 <ul
                   onClick={handleToggleNavOpen}
-                  className="flex flex-col gap-8"
+                  className="flex flex-col gap-8  text-lg"
                 >
-                  <li className="hover:text-yellow text-lg cursor-pointer">
+                  <li className="hover:text-yellow cursor-pointer">
                     <NavLink to="/">Home</NavLink>
                   </li>
                   {apiKey && (
@@ -85,7 +86,7 @@ const Navbar = () => {
                     className="mt-4"
                     onClick={() => {
                       handleToggleNavOpen();
-                      logout();
+                      logOut();
                     }}
                   >
                     Logout
@@ -112,6 +113,7 @@ export default Navbar;
 
 export const useNavbar = () => {
   const { logout, apiKey } = useContext(AuthContext);
+  const { clearUserProfile } = useContext(UserContext);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [navClassName, setNavClassName] = useState("mobile-nav-component");
 
@@ -125,5 +127,10 @@ export const useNavbar = () => {
     );
   }, [isNavOpen]);
 
-  return { navClassName, apiKey, handleToggleNavOpen, logout };
+  const logOut = () => {
+    clearUserProfile();
+    logout();
+  };
+
+  return { navClassName, apiKey, handleToggleNavOpen, logOut };
 };

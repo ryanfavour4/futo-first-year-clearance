@@ -8,6 +8,7 @@ type UserContextType = {
   error: boolean;
   message: string;
   getUserProfile: () => void;
+  clearUserProfile: () => void;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -38,6 +39,8 @@ export const UserProvider = ({ children }: Props) => {
     if (apiKey) setAxiosToken(apiKey);
     Api.get("/student/profile/")
       .then((res) => {
+        setLoading(false);
+        setMessage("");
         setUser(res.data);
       })
       .catch((err) => {
@@ -47,9 +50,21 @@ export const UserProvider = ({ children }: Props) => {
       });
   };
 
+  //????????========================= CLEAR USERS ( STUDENT ) PROFILE ======================== ??//
+  const clearUserProfile = () => {
+    setUser(null);
+  };
+
   return (
     <UserContext.Provider
-      value={{ loading, user, error, message, getUserProfile }}
+      value={{
+        loading,
+        user,
+        error,
+        message,
+        getUserProfile,
+        clearUserProfile
+      }}
     >
       {children}
     </UserContext.Provider>

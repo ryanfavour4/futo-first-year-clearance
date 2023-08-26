@@ -2,7 +2,7 @@ import React, { ReactNode, createContext, useEffect, useState } from "react";
 import { registerObjectType } from "../../pages/signups/Register";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { Api } from "../../utils/config/Api";
+import { Api, setAxiosToken } from "../../utils/config/Api";
 import { loginObjectType } from "../../pages/signups/Login";
 
 type AuthContextType = {
@@ -74,6 +74,7 @@ export const AuthProvider = ({ children }: Props) => {
         toast.success(res.data.message || "Account Successfully Created");
         setApiKey(res.data.key);
         localStorage.setItem("ApiKey", res.data.key);
+        setAxiosToken(res.data.key);
         navigate("/main-menu");
       })
       .catch((err) => {

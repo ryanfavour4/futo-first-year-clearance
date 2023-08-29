@@ -57,8 +57,8 @@ function Profile() {
               </OutlineLink>
             </div>
             {/* //**______________________________________________________*/}
-            <div className="mt-2 p-4 border-t-2 border-dark">
-              <div className="flex justify-between max-w-lg">
+            <div className="mt-2 p-4 border-t-2 border-dark  rounded-b-md " >
+              <div className="flex justify-between max-w-lg ">
                 {/* // ?? ====== REG NO & MINOR INFO COL 1 =========== ??*/}
                 <div className="">
                   <div className="flex gap-3 items-start">
@@ -94,6 +94,7 @@ function Profile() {
                       <MailIcon width={18} height={18} />
                       <small className="">{user?.student.email || "--"}</small>
                     </div>
+                   
                   </div>
                 </div>
                 {/* // ?? ====== ICT AND DEPT COL 2 =========== ??*/}
@@ -122,10 +123,51 @@ function Profile() {
                       <div className="p-2 bg-red-500 rounded-full"></div>
                     )}
                   </div>
+                   
                 </div>
               </div>
             </div>
+            <div className="rounded ">
+                       {/* COLUMN-1-SUB_PART */}
+        <div className="mt-2 rounded-t-md grid grid-cols-2 p-3">
+             {/* Changes Made */}
+             <div className="rounded-t-md">
+                    <h3>Department</h3>
+                    <div className="flex gap-3 items-center mb-3">
+                    <p>Department name :</p>
+                    <p>Computer Science</p>
+                    </div>
+                    <div className="flex gap-3 items-center mb-3">
+                    <p>Program :</p>
+                    <p> Bsc. Computer Science</p>
+                    </div>
+                    <div className="flex gap-3 items-center mb-3">
+                    <p>Enrollment Date :</p>
+                    <p>--</p>
+                    </div>
+                    <div className="flex gap-3 items-center mb-3">
+                    <p>Graduating date :</p>
+                    <p>Nil</p>
+                    </div>
+                    </div>
+                    
+                    <div className="mt-4 rounded-t-md">
+                    <h3>Faculty</h3>
+                    <div className="flex gap-3 items-center mb-3">
+                    <p>Faculty name :</p>
+                    <p>School Of Information Communication Technology</p>
+                    </div>
+                    <div className="flex gap-3 items-center mb-3">
+                    <p>Common name</p>
+                    <p> S.I.C.T</p>
+                    </div>
+                    </div>
           </div>
+            </div>
+             
+          </div>
+          
+        
           {/* //?? ================== COLUMN 2 =================== */}
           <div className="shadow-lg overflow-hidden rounded-md">
             <h3 className="font-semibold text-lg mb-4 bg-green p-4 text-light rounded-t-md">
@@ -190,8 +232,10 @@ function Profile() {
               </li>
             </ul>
           </div>
+          
         </div>
       </div>
+      
     </div>
   );
 }

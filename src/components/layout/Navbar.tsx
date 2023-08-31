@@ -1,3 +1,4 @@
+// TODO :: ADD THE DYNAMIC NAVBAR TO SHOW ONLY ROUTES THAT IS AVAILABLE TO A PARTICULAR USER
 import React, { useContext, useEffect, useState } from "react";
 import Img from "../ui/Img";
 import logo from "../../assets/images/futo-logo.png";
@@ -22,7 +23,7 @@ const Navbar = () => {
           <nav className="flex items-center justify-between">
             <div className="text-lg font-semibold flex items-center gap-4">
               <Img src={logo} alt="logo" width={"70"} />
-              <p className="max-w-[15rem]">
+              <p className="max-w-[15rem] text-base md:inline">
                 Federal University of Technology Owerri
               </p>
             </div>
@@ -113,7 +114,7 @@ export default Navbar;
 
 export const useNavbar = () => {
   const { logout, apiKey } = useContext(AuthContext);
-  const { clearUserProfile } = useContext(UserContext);
+  const { clearUserProfile, user } = useContext(UserContext);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [navClassName, setNavClassName] = useState("mobile-nav-component");
 
@@ -132,5 +133,5 @@ export const useNavbar = () => {
     logout();
   };
 
-  return { navClassName, apiKey, handleToggleNavOpen, logOut };
+  return { navClassName, apiKey, handleToggleNavOpen, logOut, user };
 };

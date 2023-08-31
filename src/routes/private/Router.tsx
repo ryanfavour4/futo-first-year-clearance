@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
+import { UserContext } from "../../store/context/UserContext";
 
 type Props = {
   element: JSX.Element;
-  validate?: string;
   to?: string;
+  role?: string[];
 };
 
-const ProtectedRoute = ({ element, validate, to = "/login" }: Props) => {
+const ProtectedRoute = ({ element, to = "/login", role }: Props) => {
+  const { user } = useContext(UserContext);
   const API_KEY_LOCAL_STORAGE = localStorage.getItem("ApiKey");
-  const ValidateItem = validate || API_KEY_LOCAL_STORAGE;
-  if (!ValidateItem) {
-    return <Navigate to={to} />;
+  if (!API_KEY_LOCAL_STORAGE) {
+    return <Navigate to="/login" />;
+  }
+  if (role && role.length > 0 && user?.student.user_type) {
+    if (!role.includes(user?.student.user_type.toLowerCase())) {
+      return <Navigate to={to} />;
+    }
   }
 
   return element;

@@ -2,6 +2,7 @@
 import React, { ReactNode } from "react";
 import { AuthProvider } from "./AuthContext";
 import { UserProvider } from "./UserContext";
+import { ReferenceProvider } from "./ReferenceContext";
 
 type Props = {
   children: ReactNode;
@@ -10,7 +11,9 @@ type Props = {
 export const RootStore = ({ children }: Props) => {
   return (
     <AuthProvider>
-      <UserProvider>{children}</UserProvider>
+      <UserProvider>
+        <ReferenceProvider>{children}</ReferenceProvider>
+      </UserProvider>
     </AuthProvider>
   );
 };

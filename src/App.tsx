@@ -4,8 +4,9 @@ import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
 import Layout from "./components/layout/Layout";
 import { RootStore } from "./store/context/RootStore";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { FallbackComponent, errorHandler } from "./components/layout/Fallback";
+import "react-toastify/dist/ReactToastify.css";
+import "./styles/components/CountrySelect.css";
 
 function App() {
   return (

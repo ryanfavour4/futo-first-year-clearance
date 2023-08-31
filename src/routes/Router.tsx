@@ -31,7 +31,13 @@ const Routers = () => {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route
               path="/main-menu"
-              element={<ProtectedRoute element={<MainMenu />} />}
+              element={
+                <ProtectedRoute
+                  role={["student", "doa"]}
+                  to="/"
+                  element={<MainMenu />}
+                />
+              }
             />
             <Route
               path="/profile"

@@ -1,0 +1,24 @@
+body{
+    background-color: rgb(218, 217, 217);
+}
+.second-col{
+    font-size: 14px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    line-height: 1.5rem;
+    /* color: green; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.topFirst{
+    width: 100%;
+}
+.top-data{
+    gap:26rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.button-make:hover{
+    background-color: #fff;
+    transition: 0.2s ease-in;
+    color: green;
+    border: 1px solid green;
+}

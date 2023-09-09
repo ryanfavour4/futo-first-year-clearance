@@ -33,7 +33,7 @@ function Profile() {
       />
     );
   }
-const lastLogin = new Date()
+  const lastLogin = new Date();
   return (
     <>
       <div className="wrapper">
@@ -68,51 +68,49 @@ const lastLogin = new Date()
                 <div className="  text-lg font-semibold">
                   <div className="px-4 flex justify-between items-start">
                     <div className="studentReg flex gap-3 items-start">
-                    <h3 className="font-bold text-lg  items-center">
-                      {user?.student.first_name || "--"}{" "}
-                      {user?.student.last_name || "--"}
-                    </h3>
-                    
-                    <small className="font-bold bg-yellow p-1 px-2 text-dark/80 rounded-lg mb-5">
-                      {user?.student.user_type || "--"}
-                    </small>
+                      <h3 className="font-bold text-lg  items-center">
+                        {user?.student.first_name || "--"}{" "}
+                        {user?.student.last_name || "--"}
+                      </h3>
+
+                      <small className="font-bold bg-yellow p-1 px-2 text-dark/80 rounded-lg mb-5">
+                        {user?.student.user_type || "--"}
+                      </small>
                     </div>
                     <h3 className=" font-semibold text-base">
-                        Reg No: {user?.student.username || "--"}
-                      </h3>
+                      Reg No: {user?.student.username || "--"}
+                    </h3>
                   </div>
-                 
 
-        <div className="top-data flex items-center justify-between gap-80 border-2 mt-4 p-4 rounded ">
-                      
-                      <div className="topFirst">
-                        <div className="flex gap-3 items-center ">
-                          <GenderIcon width={18} height={18} />
-                          <small className="">{user?.sex || "--"}</small>
-                        </div>
-                        <div className="flex gap-3 items-center my-3">
-                          <DateIcon width={18} height={18} />
-                          <small className="">
-                            {(user?.date_of_birth &&
-                              formatDate(user?.date_of_birth)) ||
-                              "--"}
-                          </small>
-                        </div>
-                        <div className="flex gap-3 items-center my-3">
-                          <RingIcon width={18} height={18} />
-                          <small className="">
-                            {user?.marital_status || "--"}
-                          </small>
-                        </div>
-                        <div className="flex gap-3 items-center my-3">
-                          <MailIcon width={18} height={18} />
-                          <small className="">
-                            {user?.student.email || "--"}
-                          </small>
-                        </div>
+                  <div className="top-data flex items-center justify-between gap-80 border-2 mt-4 p-4 rounded ">
+                    <div className="topFirst">
+                      <div className="flex gap-3 items-center ">
+                        <GenderIcon width={18} height={18} />
+                        <small className="">{user?.sex || "--"}</small>
                       </div>
-                    
-          <div className="second-column ">
+                      <div className="flex gap-3 items-center my-3">
+                        <DateIcon width={18} height={18} />
+                        <small className="">
+                          {(user?.date_of_birth &&
+                            formatDate(user?.date_of_birth)) ||
+                            "--"}
+                        </small>
+                      </div>
+                      <div className="flex gap-3 items-center my-3">
+                        <RingIcon width={18} height={18} />
+                        <small className="">
+                          {user?.marital_status || "--"}
+                        </small>
+                      </div>
+                      <div className="flex gap-3 items-center my-3">
+                        <MailIcon width={18} height={18} />
+                        <small className="">
+                          {user?.student.email || "--"}
+                        </small>
+                      </div>
+                    </div>
+
+                    <div className="second-column ">
                       {/* <div className="border-t-2 border-dark/40 md:hidden"></div> */}
                       <div className=" text-sm">
                         <div className="flex gap-3 items-center">
@@ -192,9 +190,13 @@ const lastLogin = new Date()
               </div>
             </div>
             <div className="flex justify-center items-center">
-            <button className="bg-green p-3 mt-2 text-sm text-white rounded-lg button-make">Make changes</button>
+              <button
+                onClick={toggleToggleSlider}
+                className="bg-green p-3 mt-2 text-sm text-white rounded-lg button-make"
+              >
+                Make changes
+              </button>
             </div>
-           
           </div>
           {/* //?? ================== COLUMN 2 =================== */}
           <div className="other">

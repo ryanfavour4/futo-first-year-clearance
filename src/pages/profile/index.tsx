@@ -171,7 +171,7 @@ function Profile() {
                   <div className="">
                     <div className="flex gap-3 items-center mb-3">
                       <p>Faculty name :</p>
-                      <p>School Of --</p>
+                      <p>School Of</p>
                     </div>
                     <div className="flex gap-3 items-center mb-3">
                       <p>Common name:</p>

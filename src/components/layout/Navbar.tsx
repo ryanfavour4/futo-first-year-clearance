@@ -52,7 +52,6 @@ const Navbar = () => {
                 Get Started
               </OutlineLink>
             )}
-
             {/* //??============== MOBILE NAVBAR ==================??// */}
             <MenuIcon
               onClick={handleToggleNavOpen}

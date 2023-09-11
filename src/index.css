@@ -9,7 +9,7 @@
 
 :root {
   --green-color: #019541;
-  --green-rgb: 44 97 405;
+  --green-rgb: 1 149 65;
   --yellow-color: #edcb11;
   --yellow-rgb: 225 241 0;
   --grey: #e0dede;
@@ -70,6 +70,23 @@ body {
   max-width: 1350px;
   margin: auto;
   height: 100%;
+}
+
+* {
+  scrollbar-width: thin; /* Thin scrollbar */
+}
+
+*::-webkit-scrollbar {
+  width: 9px;
+  background-color: rgba(var(--light-rgb));
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--grey-rgb));
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(var(--yellow-rgb) / 0.7);
 }
 
 @media only screen and (max-width: 600px) {

@@ -111,9 +111,11 @@ export const AuthProvider = ({ children }: Props) => {
   };
 
   //????????========================= LOGOUT A USER ======================== ??//
-  const logout = () => {
+  const logout = async () => {
+    Api.post("/account/auth/logout/");
     navigate("/");
     localStorage.removeItem("ApiKey");
+    window.location.reload();
   };
 
   return (

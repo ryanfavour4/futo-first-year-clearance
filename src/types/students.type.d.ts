@@ -33,6 +33,7 @@ export interface Department {
   last_login: Date;
   is_superuser: boolean;
   username: string;
+  name: string;
   first_name: string;
   last_name: string;
   email: string;
@@ -47,8 +48,11 @@ export interface Department {
 // ?????? ========  EDIT USER (STUDENT) INTERFACE =========== ??????? //
 
 export interface IEditStudent {
-  student: Student;
-  date_of_birth: Date;
+  student: {
+    first_name: string;
+    last_name: string;
+  };
+  date_of_birth: string | Date;
   sex: string;
   nationality: string;
   place_of_birth: string;
@@ -64,14 +68,10 @@ export interface IEditStudent {
   sponsor_name: string;
   sponsor_address: string;
   marital_status: string;
-  signature: string;
-  profile_picture: string;
+  signature?: string | ArrayBuffer | File | null;
+  profile_picture?: string | ArrayBuffer | File | null;
   department: number;
   faculty: number;
 }
 
-export interface Student {
-  first_name: string;
-  last_name: string;
-}
 // ???????? =============  END OF INTERFACE =============== ???????? //

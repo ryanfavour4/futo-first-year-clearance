@@ -5,12 +5,21 @@ import { ReferenceContext } from "../../store/context/ReferenceContext";
 type Props = {
   name?: string;
   className?: string;
+  value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function CountrySelect({ name, onChange, className }: Props) {
+export default function CountrySelect({
+  name,
+  value,
+  onChange,
+  className
+}: Props) {
   const { countries } = useContext(ReferenceContext);
-  const [select, setSelect] = useState("");
+  const selectedCountry = countries.find((country) => country.name === value);
+  const [select, setSelect] = useState(selectedCountry?.code || "");
+  const CountryCodes = countries.map((codes) => codes.code);
+
   const onSelect = (code: string) => {
     setSelect(code);
     const selectedCountry = countries.find((country) => country.code === code);
@@ -27,7 +36,7 @@ export default function CountrySelect({ name, onChange, className }: Props) {
       placeholder={"Select a country"}
       searchable
       searchPlaceholder={"Search Your Country"}
-      countries={countries.map((codes) => codes.code)}
+      countries={CountryCodes}
       showSelectedLabel
       /*
         selectedSize={selectedSize}

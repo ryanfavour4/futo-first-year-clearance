@@ -42,7 +42,7 @@ Validator.prototype.validate = function (obj) {
   //? LOOP THOUGH ENTRIES OBJECT
   entries.forEach((objArr) => {
     //? CHECK IF EMPTY SO IT BREAKS OUT INSTANTLY
-    if (objArr[1].trim() === "") {
+    if (objArr[1]?.trim() === "") {
       this.errors.push(`${objArr[0]} IS COMPLETELY EMPTY`);
       return;
     }

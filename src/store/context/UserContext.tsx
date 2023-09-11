@@ -1,6 +1,8 @@
 import React, { ReactNode, createContext, useEffect, useState } from "react";
-import { Api, setAxiosToken } from "../../utils/config/Api";
-import { IStudent } from "../../types/students.type";
+import { API_BASE_URL, Api, setAxiosToken } from "../../utils/config/Api";
+import { IEditStudent, IStudent } from "../../types/students.type";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 type UserContextType = {
   user: IStudent | null;
@@ -8,6 +10,7 @@ type UserContextType = {
   error: boolean;
   message: string;
   getUserProfile: () => void;
+  editUserProfile: (editUserPayload: IEditStudent) => void;
   clearUserProfile: () => void;
 };
 
@@ -50,6 +53,54 @@ export const UserProvider = ({ children }: Props) => {
       });
   };
 
+  //????????========================= EDIT USERS ( STUDENT ) PROFILE ======================== ??//
+  const editUserProfile = (editUserPayload: IEditStudent) => {
+    setLoading(true);
+    setError(false);
+    setMessage("");
+    setLoading(false);
+    if (apiKey) setAxiosToken(apiKey);
+    if (
+      editUserPayload.profile_picture !== null ||
+      editUserPayload.signature !== null
+    ) {
+      uploadImage(editUserPayload);
+    }
+    const { signature, profile_picture, ...newPayload } = editUserPayload;
+    Api.patch("student/profile/edit/", newPayload)
+      .then((res) => {
+        setLoading(false);
+        setMessage("Profile Edited Successfully");
+        toast.success("Profile Edited Successfully");
+        getUserProfile();
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError(true);
+        setMessage("An Error Occurred Editing Profile");
+      });
+  };
+
+  const uploadImage = async (editUserPayload: IEditStudent) => {
+    for (const key in editUserPayload) {
+      if (editUserPayload.hasOwnProperty(key)) {
+        if (key === "profile_picture" || key === "signature") {
+          const formData = new FormData();
+          formData.append(
+            key,
+            editUserPayload[key as keyof IEditStudent] as Blob
+          );
+          axios.patch(`${API_BASE_URL}/student/profile/edit/`, formData, {
+            headers: {
+              Authorization: `token ${apiKey}`,
+              "Content-Type": "multipart/form-data"
+            }
+          });
+        }
+      }
+    }
+  };
+
   //????????========================= CLEAR USERS ( STUDENT ) PROFILE ======================== ??//
   const clearUserProfile = () => {
     setUser(null);
@@ -63,6 +114,7 @@ export const UserProvider = ({ children }: Props) => {
         error,
         message,
         getUserProfile,
+        editUserProfile,
         clearUserProfile
       }}
     >

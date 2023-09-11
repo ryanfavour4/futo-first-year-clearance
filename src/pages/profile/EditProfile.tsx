@@ -98,10 +98,10 @@ export default function EditProfile({ user, toggleToggleSlider }: Props) {
                 />
               </div>
               <div className="">
-                <label htmlFor="sex">Gender</label>
+                <label htmlFor="gender">Gender</label>
                 <select
-                  name="sex"
-                  id="sex"
+                  name="gender"
+                  id="gender"
                   className="bg-transparent border-2 border-gray-300 rounded-lg p-2 py-3 w-full outline-none"
                   value={editArray.gender}
                   onChange={handleEdit}
@@ -128,7 +128,7 @@ export default function EditProfile({ user, toggleToggleSlider }: Props) {
                 <label htmlFor="maritalStatus">Marital Status</label>
                 <select
                   className="bg-transparent border-2 border-gray-300 rounded-lg p-2 py-3 w-full outline-none"
-                  value={user?.marital_status}
+                  value={editArray?.maritalStatus}
                   id="maritalStatus"
                   name="maritalStatus"
                   onChange={handleEdit}
@@ -363,6 +363,7 @@ export function useEditProfileController() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
+    console.log(name, value);
     setEditArray({ ...editArray, [name]: value });
   };
 

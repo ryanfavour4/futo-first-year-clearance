@@ -141,7 +141,7 @@ function Profile() {
                   <div className="flex gap-3 items-center mb-3">
                     <p>Department name :</p>
                     <br />
-                    <p>{user?.department.name || "--"}</p>
+                    <p>{user?.department?.name || "--"}</p>
                   </div>
                   <div className="flex gap-3 items-center mb-3">
                     <p>Program :</p>
@@ -159,7 +159,7 @@ function Profile() {
                 <div className="">
                   <div className="flex gap-3 items-center mb-3">
                     <p>Faculty name :</p>
-                    <p>{user?.faculty.name}</p>
+                    <p>{user?.faculty?.name}</p>
                   </div>
                   <div className="flex gap-3 items-center mb-3">
                     <p>Common name:</p>

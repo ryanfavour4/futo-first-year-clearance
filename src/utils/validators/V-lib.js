@@ -42,10 +42,14 @@ Validator.prototype.validate = function (obj) {
   //? LOOP THOUGH ENTRIES OBJECT
   entries.forEach((objArr) => {
     //? CHECK IF EMPTY SO IT BREAKS OUT INSTANTLY
-    if (objArr[1]?.trim() === "") {
+    if (typeof objArr[1] === "string" && objArr[1]?.trim() === "") {
       this.errors.push(`${objArr[0]} IS COMPLETELY EMPTY`);
       return;
+    }if (objArr[1] === null || objArr[1] === undefined){
+      this.errors.push(`${objArr[0]} IS NULL`);
+      return;
     }
+    
     //? VALIDATE BASED ON THE USERS RULES
     //? FIRSTLY CHECKS IF THAT OBJECT WAS ASKED TO BE VALIDATED
     if (this.rules[objArr[0]] !== undefined) {

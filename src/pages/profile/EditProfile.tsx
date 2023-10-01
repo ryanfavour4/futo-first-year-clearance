@@ -363,7 +363,6 @@ export function useEditProfileController() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setEditArray({ ...editArray, [name]: value });
   };
 

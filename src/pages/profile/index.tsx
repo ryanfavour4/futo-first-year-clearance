@@ -17,6 +17,7 @@ import OtherInfo from "./OtherInfo";
 import EditProfile from "./EditProfile";
 import SideSlider, { useSideSlider } from "../../components/ui/SideSlider";
 import OutlineButton from "../../components/ui/OutlineButton";
+import { SectionContext } from "../../store/context/SectionContext";
 
 function Profile() {
     const { loading, user, error, getUserProfile } = useProfile();
@@ -229,11 +230,17 @@ export default Profile;
 
 const useProfile = () => {
     const { loading, error, getUserProfile, user } = useContext(UserContext);
+    const {
+        getStudentDepartments,
+        getStudentFaculties,
+        departments,
+        faculties,
+    } = useContext(SectionContext);
 
     useEffect(() => {
-        if (user === null) {
-            getUserProfile();
-        }
+        if (user === null) getUserProfile();
+        if (!departments.length) getStudentDepartments();
+        if (!faculties.length) getStudentFaculties();
     }, []);
 
     return { loading, getUserProfile, user, error };

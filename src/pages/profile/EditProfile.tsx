@@ -437,11 +437,11 @@ export function useEditProfileController() {
         nextOfKinTelephone: user?.next_of_kin_telephone || "",
         sponsorName: user?.sponsor_name || "",
         sponsorAddress: user?.sponsor_address || "",
-        department: user?.department.id || 0,
-        faculty: user?.faculty.id || 0,
+        department: user?.department ? user?.department.id : 0,
+        faculty: user?.faculty ? user?.faculty.id : 0,
         signature: selectedSignature,
     });
-
+// console.log(user?.department)
     const handleEdit = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {

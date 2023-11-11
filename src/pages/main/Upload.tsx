@@ -1,4 +1,3 @@
-import { Input } from "postcss";
 import React, { useRef } from "react";
 const Upload = () => {
   const ref = useRef<HTMLInputElement>(null);

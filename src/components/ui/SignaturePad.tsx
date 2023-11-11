@@ -6,6 +6,5 @@ export default function SignaturePad (){
         <div>
         <SignatureCanvas/> 
     </div>
-    )
-  
+    ) 
 }

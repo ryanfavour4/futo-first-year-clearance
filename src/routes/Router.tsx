@@ -13,6 +13,7 @@ import Login from "../pages/signups/Login";
 import Register from "../pages/signups/Register";
 import ForgotPassword from "../pages/signups/ForgotPassword";
 import ErrorPage from "../pages/ErrorPage";
+import Upload from "../pages/main/Upload";
 
 // ?? ======== LAZY LOAD API FILLED CONTENT FILLED PAGE TO OPTIMIZE USERS BROWSER SPEED ====== ?? //
 const MainMenu = lazy(() => import("../pages/main"));
@@ -32,6 +33,10 @@ const Routers = () => {
                         <Route
                             path="/forgot-password"
                             element={<ForgotPassword />}
+                        />
+                        <Route
+                            path="/upload-document"
+                            element={<Upload />}
                         />
                         <Route
                             path="/main-menu"

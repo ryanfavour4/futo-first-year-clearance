@@ -376,6 +376,7 @@ export default function EditProfile({ user, toggleToggleSlider }: Props) {
                                     onChange={handleImageChange}
                                     name="signature"
                                 />
+                                 <p className=" pt-4 text-sm">Don't have a signature yet? <a target="_blank" rel="noopener noreferrer" className="text-green  focus:text-blue" href="/signature-pad">Create one</a></p>
                             </div>
                         </div>
                     </div>

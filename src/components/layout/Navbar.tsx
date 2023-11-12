@@ -32,6 +32,9 @@ const Navbar = () => {
                 <NavLink to="/">Home</NavLink>
               </li>
               <li className="hover:text-yellow cursor-pointer">
+                <NavLink to="/main-menu">Main</NavLink>
+              </li>
+              <li className="hover:text-yellow cursor-pointer">
                 <NavLink to="/contact-us">Contact</NavLink>
               </li>
               {apiKey && (

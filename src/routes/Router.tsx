@@ -14,7 +14,7 @@ import Register from "../pages/signups/Register";
 import ForgotPassword from "../pages/signups/ForgotPassword";
 import ErrorPage from "../pages/ErrorPage";
 import Upload from "../pages/main/Upload";
-
+import SignaturePad from "../components/ui/SignaturePad";
 // ?? ======== LAZY LOAD API FILLED CONTENT FILLED PAGE TO OPTIMIZE USERS BROWSER SPEED ====== ?? //
 const MainMenu = lazy(() => import("../pages/main"));
 const Profile = lazy(() => import("../pages/profile"));
@@ -34,6 +34,7 @@ const Routers = () => {
                             path="/forgot-password"
                             element={<ForgotPassword />}
                         />
+                        <Route path="/signature-pad" element={<SignaturePad />} />
                         <Route
                             path="/upload-document"
                             element={<Upload />}

@@ -6,7 +6,7 @@ import { UserContext } from "../../store/context/UserContext";
 import Img from "../contact/ui/Img";
 import nouser from "../../assets/svg/user.svg";
 import { Validator } from "../../utils/validators/V-lib";
-
+import LinkButton from "../contact/ui/LinkButton";
 export default function MainMenu() {
     const { user, processSteps } = useMainMenuController();
     return (
@@ -37,10 +37,14 @@ export default function MainMenu() {
                     </div>
                     {/* //??? ============= TIMELINE BAR ============= ???? // */}
                     <div className="mt-10 md:px-10">
+                        <div className="flex justify-between">
                         <h2 className="text-lg font-semibold mb-4">
                             Process Timeline
                             <i className="text-green text-2xl font-bold">!</i>
                         </h2>
+                        <LinkButton to="/upload-document">Upload documents</LinkButton>
+                        </div>
+                       
                         <p>
                             Below Is your FUTO clearance process time line
                             please endeavour to complete each process

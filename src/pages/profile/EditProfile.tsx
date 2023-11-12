@@ -376,6 +376,7 @@ export default function EditProfile({ user, toggleToggleSlider }: Props) {
                                     onChange={handleImageChange}
                                     name="signature"
                                 />
+                                 <p className=" pt-4 text-sm">Don't have a signature yet? <a target="_blank" rel="noopener noreferrer" className="text-green  focus:text-blue" href="/signature-pad">Create one</a></p>
                             </div>
                         </div>
                     </div>
@@ -437,11 +438,11 @@ export function useEditProfileController() {
         nextOfKinTelephone: user?.next_of_kin_telephone || "",
         sponsorName: user?.sponsor_name || "",
         sponsorAddress: user?.sponsor_address || "",
-        department: user?.department.id || 0,
-        faculty: user?.faculty.id || 0,
+        department: user?.department ? user?.department.id : 0,
+        faculty: user?.faculty ? user?.faculty.id : 0,
         signature: selectedSignature,
     });
-
+// console.log(user?.department)
     const handleEdit = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {

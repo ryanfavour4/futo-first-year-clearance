@@ -1,10 +1,5 @@
-import React, { useRef } from "react";
-import Button from "../contact/ui/Button";
 import Input from "../../components/ui/Input";
 const Upload = () => {
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0];
-  };
   return (
     <>
     <div className="p-2 text-sm ">
